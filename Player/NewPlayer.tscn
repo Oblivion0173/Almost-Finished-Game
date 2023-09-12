@@ -1,0 +1,360 @@
+[gd_scene load_steps=19 format=3 uid="uid://chhn6o8odgdqe"]
+
+[ext_resource type="Script" path="res://Player/NewPlayer.gd" id="1_mqley"]
+[ext_resource type="Texture2D" uid="uid://boys841kf402c" path="res://Assets/Player/spritesheet final.png" id="2_bt4sh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlngx"]
+radius = 7.0
+height = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvqmm"]
+size = Vector2(15.5059, 3.356)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rx21p"]
+radius = 2.0
+height = 19.8061
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tshuq"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_6mo8j"]
+resource_name = "Dash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_eoo8m"]
+resource_name = "Death"
+length = 0.66
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_ljr73"]
+resource_name = "Fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_f1r3b"]
+resource_name = "Idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_4v40v"]
+resource_name = "Jump"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_rqpf6"]
+resource_name = "Low_Attack"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20, 21, 22, 23, 24, 26, 28, 29, 30, 31]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Low_Attack/L_Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.403302, 0.951007),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_7hj5e"]
+resource_name = "Parry"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00170891, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.10139, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 31, 30, 32, 33, 34, 35, 36, 37, 38, 30, 31, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Parry/Parry_Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_veb1o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Regular_Attack/R_Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Low_Attack/L_Hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Parry/Parry_Hitbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4ubpr"]
+resource_name = "Regular_Attack"
+length = 0.66
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 12, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Regular_Attack/R_Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10168, 0.22643),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_m6lki"]
+resource_name = "Run"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [41, 42, 43, 44, 45, 46, 47, 49]
+}
+
+[sub_resource type="Animation" id="Animation_c7yrx"]
+resource_name = "Take_Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [48]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pn6r8"]
+_data = {
+"Dash": SubResource("Animation_6mo8j"),
+"Death": SubResource("Animation_eoo8m"),
+"Fall": SubResource("Animation_ljr73"),
+"Idle": SubResource("Animation_f1r3b"),
+"Jump": SubResource("Animation_4v40v"),
+"Low_Attack": SubResource("Animation_rqpf6"),
+"Parry": SubResource("Animation_7hj5e"),
+"RESET": SubResource("Animation_veb1o"),
+"Regular_Attack": SubResource("Animation_4ubpr"),
+"Run": SubResource("Animation_m6lki"),
+"Take_Hit": SubResource("Animation_c7yrx")
+}
+
+[node name="NewPlayer" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_mqley")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -23.7673)
+scale = Vector2(1.00588, 1)
+texture = ExtResource("2_bt4sh")
+hframes = 50
+frame = 41
+
+[node name="Regular_Attack" type="Area2D" parent="Sprite2D"]
+position = Vector2(0.248539, 23.7673)
+scale = Vector2(0.994154, 1)
+collision_layer = 0
+collision_mask = 8192
+
+[node name="R_Hitbox" type="CollisionShape2D" parent="Sprite2D/Regular_Attack"]
+position = Vector2(20, -20)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nlngx")
+disabled = true
+
+[node name="Low_Attack" type="Area2D" parent="Sprite2D"]
+position = Vector2(0.248539, 23.7673)
+scale = Vector2(0.994154, 1)
+collision_layer = 0
+collision_mask = 16384
+
+[node name="L_Hitbox" type="CollisionShape2D" parent="Sprite2D/Low_Attack"]
+position = Vector2(23.775, -13.8643)
+rotation = -3.14159
+scale = Vector2(1, 1.18034)
+shape = SubResource("RectangleShape2D_cvqmm")
+disabled = true
+
+[node name="Parry" type="Area2D" parent="."]
+collision_layer = 32768
+
+[node name="Parry_Hitbox" type="CollisionShape2D" parent="Parry"]
+position = Vector2(11, -23)
+scale = Vector2(1.006, 1)
+shape = SubResource("CapsuleShape2D_rx21p")
+disabled = true
+
+[node name="Player_Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14.8546)
+shape = SubResource("CapsuleShape2D_tshuq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_pn6r8")
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="Attack_Cooldown" type="Timer" parent="."]
+wait_time = 1.35
+one_shot = true
+
+[node name="Dash" type="Node" parent="."]
+
+[node name="Dash_Timer" type="Timer" parent="Dash"]
+one_shot = true
+
+[node name="Parry_Duration" type="Timer" parent="."]
+wait_time = 4.615
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -60)
+
+[connection signal="body_entered" from="Sprite2D/Regular_Attack" to="." method="_on_regular_attack_body_entered" flags=18]
+[connection signal="body_entered" from="Sprite2D/Low_Attack" to="." method="_on_low_attack_body_entered" flags=18]
+[connection signal="timeout" from="Attack_Cooldown" to="." method="_on_timer_timeout" flags=18]
