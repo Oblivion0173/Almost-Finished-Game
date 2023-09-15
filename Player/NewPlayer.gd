@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name NewPlayer
 @export var damage : int = 10
 @export var health : float = 100
+@export var can_be_hit : bool = true
 enum {MOVE, ATTACK, IDLE, DEATH}
 @onready var dash_timer = $Dash/Dash_Timer
 var normalspeed = 150
@@ -9,7 +10,6 @@ var direction = 1
 var SPEED = 150
 const JUMP_VELOCITY = -400.0
 const dash_speed = 2500
-var can_be_hit = true
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var spriteplayer = $AnimationPlayer
@@ -108,7 +108,6 @@ func attack_state(input, delta):
 		$Attack_Cooldown.start()
 		#Parry
 	if sword.z and $Attack_Cooldown.is_stopped():
-		parry()
 		spriteplayer.play("Parry")
 #		await spriteplayer.animation_finished
 		$Attack_Cooldown.start()
@@ -147,7 +146,7 @@ func _on_low_attack_body_entered(body):
 	print(body.name)
 
 func _on_regular_attack_body_entered(body):
-	if body is bat:
+	if body is bat or golem:
 		body.hit(damage)
 	print(body.name)
 
@@ -156,14 +155,6 @@ func hit(damage : int):
 		health -= damage
 	print(health)
 
-func parry():
-	$Parry_Duration.start()
-	can_be_hit = false
-	await $Parry_Duration.timeout
-	can_be_hit = true
-	
-	
-	pass
 ########################---------------DASH---------------------------#######################
 func start_dash(duration):
 	dash_timer.wait_time = duration

@@ -148,10 +148,22 @@ tracks/1/path = NodePath("../Parry/Parry_Hitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.2),
+"times": PackedFloat32Array(0, 0.3, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:can_be_hit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_veb1o"]
@@ -203,6 +215,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..:can_be_hit")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_4ubpr"]
@@ -285,6 +309,7 @@ _data = {
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_mqley")
+can_be_hit = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -23.7673)
@@ -297,7 +322,7 @@ frame = 41
 position = Vector2(0.248539, 23.7673)
 scale = Vector2(0.994154, 1)
 collision_layer = 0
-collision_mask = 8192
+collision_mask = 12480
 
 [node name="R_Hitbox" type="CollisionShape2D" parent="Sprite2D/Regular_Attack"]
 position = Vector2(20, -20)

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-enum {MOVE, ATTACK}
+class_name golem
+enum {MOVE, ATTACK, DEATH, STUNNED}
 @onready var spriteplayer = $AnimationPlayer
 const speed = 25
 const JUMP_VELOCITY = -400.0
@@ -12,8 +13,8 @@ var stop_move_speed = 0
 @onready var vision = $Vision
 var state = MOVE
 @export var damage : int = 20
-@export var health : float = 10
-var stunned = false
+@export var health : float = 30
+var is_stunned = false
 func _physics_process(delta):
 		# Add the gravity.
 	if not is_on_floor():
@@ -21,6 +22,8 @@ func _physics_process(delta):
 	match state:
 		MOVE: move()
 		ATTACK: attack()
+		DEATH: death()
+		STUNNED: stunned()
 	if is_on_wall():
 		direction *= -1
 		$".".transform.x *= -1
@@ -29,18 +32,36 @@ func _physics_process(delta):
 func move():
 	spriteplayer.play("Walk")
 	velocity.x = direction * speed
+	if health <= 0:
+		state = DEATH
+	if is_stunned:
+		state = STUNNED
 	move_and_slide()
-	
+
+func death():
+	spriteplayer.play("Death")
+	await spriteplayer.animation_finished
+	self.queue_free()
+	pass
 func attack():
 	velocity.x = direction * stop_move_speed
 	spriteplayer.play("Attack")
+
+func stunned():
+	spriteplayer.play("Stun")
+	if health <= 0:
+		state = DEATH
+	await spriteplayer.animation_finished
+	is_stunned = false
+	state = MOVE
+	pass
 
 func hit(damage : int):
 	health -= damage
 	print(health)
 
 func _on_vision_body_entered(body):
-	if !stunned:
+	if !is_stunned:
 		state = ATTACK
 
 func _on_vision_body_exited(body):
@@ -56,10 +77,7 @@ func _on_hitbox_body_entered(body):
 
 
 func _on_hitbox_area_entered(area):
-#	stunned = true
-#	print(stunned)
-#	spriteplayer.play("Stun")
-#	await spriteplayer.animation_finished
-#	stunned = false
 	print("stunned")
+	state = STUNNED
+
 	
