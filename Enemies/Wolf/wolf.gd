@@ -26,14 +26,11 @@ func _physics_process(delta):
 	if is_on_wall():
 		direction *= -1
 		$".".transform.x *= -1
-		#if Input.is_action_just_pressed("ui_accept"):
-#		spriteplayer.play("Attack")
 #
 func move():
 	spriteplayer.play("Run")
-#	$Vision/CollisionShape2D.disabled = true  
 	velocity.x = direction * speed
-	if health <= 0:                                                                                                                                                                                                                                                     
+	if health == 0:
 		state = DEATH
 	move_and_slide()
 
@@ -49,6 +46,8 @@ func death():
 func attack():
 	velocity.x = direction * stop_move_speed
 	spriteplayer.play("Attack")
+	if health <= 0:
+		state = DEATH
 	pass
 
 func _on_vision_body_entered(body):

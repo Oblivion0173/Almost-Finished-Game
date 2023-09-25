@@ -251,7 +251,7 @@ tracks/1/path = NodePath("Regular_Attack/R_Hitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.10168, 0.22643),
+"times": PackedFloat32Array(0, 0.10168, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -309,7 +309,6 @@ _data = {
 collision_layer = 2
 collision_mask = 14
 script = ExtResource("1_mqley")
-can_be_hit = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -23.7673)

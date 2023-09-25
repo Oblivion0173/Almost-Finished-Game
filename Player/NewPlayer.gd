@@ -22,7 +22,6 @@ static var player
 func _ready():
 	player = self
 func _physics_process(delta):
-	print(can_be_hit)
 	input = get_input()
 	match state:
 		MOVE: move_state(input, delta)
