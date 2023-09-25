@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 class_name golem
 enum {MOVE, ATTACK, DEATH, STUNNED}
 @onready var spriteplayer = $AnimationPlayer

@@ -11,11 +11,12 @@ config_version=5
 [application]
 
 config/name="Untitled Game"
-run/main_scene="res://Level/test_level.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 
 [display]
 
+window/size/initial_position_type=0
 window/stretch/scale=4.0
 
 [input]
@@ -56,6 +57,7 @@ d={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Wall"
 2d_physics/layer_4="Floor"
+2d_physics/layer_5="Ceiling"
 2d_physics/layer_7="Bat"
 2d_physics/layer_8="Wolf"
 2d_physics/layer_13="Golem"

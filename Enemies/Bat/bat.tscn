@@ -229,7 +229,7 @@ radius = 11.1803
 [node name="Bat" type="CharacterBody2D"]
 scale = Vector2(-1, 1)
 collision_layer = 65
-collision_mask = 64
+collision_mask = 0
 script = ExtResource("1_ok5q8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -246,55 +246,46 @@ texture = ExtResource("1_18v84")
 hframes = 8
 
 [node name="PlayerDetector" type="RayCast2D" parent="." groups=["PlayerDetectionCasts"]]
-visible = false
 rotation = -1.51669
 scale = Vector2(2, 2)
 collision_mask = 2
 
 [node name="PlayerDetector2" type="RayCast2D" parent="." groups=["PlayerDetectionCasts"]]
-visible = false
 rotation = -1.39626
 scale = Vector2(2, 2)
 collision_mask = 2
 
 [node name="PlayerDetector3" type="RayCast2D" parent="." groups=["PlayerDetectionCasts"]]
-visible = false
 rotation = -1.27584
 scale = Vector2(2, 2)
 collision_mask = 2
 
 [node name="PlayerDetector4" type="RayCast2D" parent="." groups=["PlayerDetectionCasts"]]
-visible = false
 rotation = -1.15715
 scale = Vector2(2, 2)
 collision_mask = 2
 
 [node name="PlayerDetector5" type="RayCast2D" parent="." groups=["PlayerDetectionCasts"]]
-visible = false
 rotation = -1.03847
 scale = Vector2(2, 2)
 collision_mask = 2
 
 [node name="PlayerDetector6" type="RayCast2D" parent="." groups=["PlayerDetectionCasts"]]
-visible = false
 rotation = -0.918043
 scale = Vector2(2, 2)
 collision_mask = 2
 
 [node name="WallDetector" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(17, -6)
 scale = Vector2(1, 0.5)
 target_position = Vector2(0, 24)
 collision_mask = 4
 
 [node name="FloorDetector" type="RayCast2D" parent="."]
-visible = false
 target_position = Vector2(0, 11)
 collision_mask = 8
 
 [node name="CeilingDetector" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(-5, -13)
 target_position = Vector2(0, 8)
 collision_mask = 16

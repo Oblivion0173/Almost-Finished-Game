@@ -8,7 +8,7 @@ enum {MOVE, ATTACK, IDLE, DEATH}
 var normalspeed = 150
 var direction = 1
 var SPEED = 150
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -300.0
 const dash_speed = 2500
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,6 +22,7 @@ static var player
 func _ready():
 	player = self
 func _physics_process(delta):
+	print(can_be_hit)
 	input = get_input()
 	match state:
 		MOVE: move_state(input, delta)
@@ -141,12 +142,13 @@ func _on_timer_timeout():
 
 ###########################---------------ATTACKING-----------------#######################
 func _on_low_attack_body_entered(body):
-	if body is DamageableViking:
+	if body is wolf:
 		body.hit(damage)
 	print(body.name)
 
 func _on_regular_attack_body_entered(body):
-	if body is bat or golem:
+	if body is bat or golem or wolf:
+		print("hit")
 		body.hit(damage)
 	print(body.name)
 

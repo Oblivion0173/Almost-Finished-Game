@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://debvov4qsyw41"]
+
+[ext_resource type="PackedScene" uid="uid://bv2a4vpt3g7jb" path="res://Level/Better_Level.tscn" id="1_yvss1"]
+[ext_resource type="PackedScene" uid="uid://chhn6o8odgdqe" path="res://Player/NewPlayer.tscn" id="2_edgyo"]
+[ext_resource type="PackedScene" uid="uid://dkaw8wtbdoa8k" path="res://Enemies/Wolf/wolf.tscn" id="3_2jpkd"]
+[ext_resource type="PackedScene" uid="uid://bs38bq5qjpys3" path="res://Enemies/Bat/bat.tscn" id="3_yd47g"]
+
+[node name="Main" type="Node2D"]
+position = Vector2(108, 28)
+
+[node name="Better_Level" parent="." instance=ExtResource("1_yvss1")]
+
+[node name="NewPlayer" parent="." instance=ExtResource("2_edgyo")]
+position = Vector2(-148, 6)
+can_be_hit = true
+
+[node name="Bat" parent="." instance=ExtResource("3_yd47g")]
+position = Vector2(470, -125)
+
+[node name="Bat2" parent="." instance=ExtResource("3_yd47g")]
+position = Vector2(190, -125)
+scale = Vector2(1, 1)
+
+[node name="Wolf" parent="." instance=ExtResource("3_2jpkd")]
+position = Vector2(410, 197)
+
+[node name="Wolf2" parent="." instance=ExtResource("3_2jpkd")]
+position = Vector2(881, 200)
+
+[node name="Wolf3" parent="." instance=ExtResource("3_2jpkd")]
+position = Vector2(595, 202)
+
+[node name="Bat3" parent="." instance=ExtResource("3_yd47g")]
+position = Vector2(764, 127)
