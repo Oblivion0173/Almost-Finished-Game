@@ -379,6 +379,15 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -60)
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.156863, 0.878431, 0.133333, 1)
+offset_left = -8.0
+offset_top = 2.0
+offset_right = 132.0
+offset_bottom = 29.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
+
 [connection signal="body_entered" from="Sprite2D/Regular_Attack" to="." method="_on_regular_attack_body_entered" flags=18]
 [connection signal="body_entered" from="Sprite2D/Low_Attack" to="." method="_on_low_attack_body_entered" flags=18]
 [connection signal="timeout" from="Attack_Cooldown" to="." method="_on_timer_timeout" flags=18]

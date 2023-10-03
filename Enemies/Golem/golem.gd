@@ -11,8 +11,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var stop_move_speed = 0
 @onready var vision = $Vision
 var state = MOVE
-@export var damage : int = 20
-@export var health : float = 30
+@export var damage : int = 50
+@export var health : float = 10
 var is_stunned = false
 func _physics_process(delta):
 		# Add the gravity.

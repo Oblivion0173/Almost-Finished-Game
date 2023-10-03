@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://debvov4qsyw41"]
+[gd_scene load_steps=6 format=3 uid="uid://debvov4qsyw41"]
 
-[ext_resource type="PackedScene" uid="uid://bv2a4vpt3g7jb" path="res://Level/Better_Level.tscn" id="1_admfq"]
+[ext_resource type="PackedScene" uid="uid://bv2a4vpt3g7jb" path="res://Level/Main_Level.tscn" id="1_admfq"]
 [ext_resource type="PackedScene" uid="uid://chhn6o8odgdqe" path="res://Player/NewPlayer.tscn" id="2_j6r6w"]
 [ext_resource type="PackedScene" uid="uid://bs38bq5qjpys3" path="res://Enemies/Bat/bat.tscn" id="3_ttqjh"]
 [ext_resource type="PackedScene" uid="uid://dkaw8wtbdoa8k" path="res://Enemies/Wolf/wolf.tscn" id="4_0vsl5"]
+[ext_resource type="PackedScene" uid="uid://dwoe244jp15hw" path="res://door.tscn" id="5_2k7p4"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(108, 28)
@@ -30,3 +31,7 @@ position = Vector2(595, 202)
 
 [node name="Bat3" parent="." instance=ExtResource("3_ttqjh")]
 position = Vector2(764, 127)
+
+[node name="Door" parent="." instance=ExtResource("5_2k7p4")]
+position = Vector2(970, 207)
+filepath = "res://Level/Boss_Level.tscn"

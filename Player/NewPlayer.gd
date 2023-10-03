@@ -22,6 +22,7 @@ static var player
 func _ready():
 	player = self
 func _physics_process(delta):
+	update_healthbar()
 	input = get_input()
 	match state:
 		MOVE: move_state(input, delta)
@@ -77,21 +78,9 @@ func move_state(input, delta):
 		$Sprite2D/Regular_Attack.scale.x = 1
 		$Sprite2D/Low_Attack.scale.x = 1
 		$Parry/Parry_Hitbox.position.x = 11
-#	if dash_input:
-#		start_dash(1.3)
-#		velocity.x = dash_speed * direction if is_dashing() else SPEED * direction
-##		velocity.x = 1150 * direction
-#		$AnimatedSprite2D.play("Roll")
-##		await $AnimatedSprite2D.animation_finished
-##		SPEED = 150
-##		start_dash(0.3)
-##		if is_dashing(): 
-##			SPEED = dash_speed
-##		else:
-##			SPEED = 150
 	if sword and is_on_floor() and $Attack_Cooldown.is_stopped():
 		state = ATTACK
-	if health == 0:
+	if health <= 0 and is_on_floor():
 		state = DEATH
 	move_and_slide()
 
@@ -128,7 +117,7 @@ func idle_state(input, delta):
 	else:
 		pass
 
-func death_state(delta):
+func death_state(delta): 
 	spriteplayer.play("Death")
 	await spriteplayer.animation_finished
 	get_tree().reload_current_scene()
@@ -163,3 +152,32 @@ func start_dash(duration):
 
 func is_dashing():
 	return !dash_timer.is_stopped()
+
+func update_healthbar():
+	var healthbar = $HealthBar
+	healthbar.value = health
+	
+	if health >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
