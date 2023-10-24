@@ -1,4 +1,4 @@
-# Desolte Dungeon
+# Desolate Dungeon
 
 This is a 2D sidescrolling combat platformer created using Godot 4. It features a dynamic main character, a variety of complex enemies, a boss room, 
  and original sprites and animations for all of them. A few complex mechanisms are implemented, such as a parry system and enemy-specific attacks.
